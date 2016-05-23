@@ -5,7 +5,7 @@ class Controller_Comments Extends Controller_Base {
         function index() {
             
             
-            include_once($site_dir . DIRSEP . 'models' . DIRSEP . 'users.php');
+            include_once(site_path . DIRSEP . 'models' . DIRSEP . 'users.php');
             $usersModel = new Model_Users();
             $usersModel->tryAuth($_SESSION['login'], $_SESSION['password']);
             $user = $this->user;
@@ -14,7 +14,7 @@ class Controller_Comments Extends Controller_Base {
             
             if ($isAuthorized) {
 
-                include_once($site_dir . DIRSEP . 'models' . DIRSEP . 'comments.php');
+                include_once(site_path . DIRSEP . 'models' . DIRSEP . 'comments.php');
                 $commentsModel = new Model_Comments();
                 
                 if (isset($_POST['subject']) && isset($_POST['text'])) {
@@ -37,7 +37,7 @@ class Controller_Comments Extends Controller_Base {
             }
             
             
-            include_once($site_dir . DIRSEP . 'views' . DIRSEP . 'comments.php');
+            include_once(site_path . DIRSEP . 'views' . DIRSEP . 'comments.php');
         }
 
 

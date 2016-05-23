@@ -4,14 +4,14 @@ Class Controller_Index Extends Controller_Base {
     
         function index() {
             
-            include_once($site_dir . DIRSEP . 'models' . DIRSEP . 'users.php');
+            include_once(site_path . DIRSEP . 'models' . DIRSEP . 'users.php');
             $usersModel = new Model_Users($this->registry);
             $isAuthorized = $usersModel->isAuthorized();
             
             if ($isAuthorized) {
                 if ($_GET['mode'] == 'logout') {
-                    $gb->logout();
-                    header('Location: /');
+                    $usersModel->logout();
+                    header('Location: index');
                 } else {
                     header('Location: comments');
                 }  
@@ -30,7 +30,7 @@ Class Controller_Index Extends Controller_Base {
                 } else {  
                     $needForm = true;
                 }
-            include_once($site_dir . DIRSEP . 'views' . DIRSEP . 'auth.php');
+            include_once(site_path . DIRSEP . 'views' . DIRSEP . 'auth.php');
             }
             
         }

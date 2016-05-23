@@ -4,11 +4,11 @@ Class Controller_Registration Extends Controller_Base {
     
         function index() {
             
-            include_once($site_dir . DIRSEP . 'models' . DIRSEP . 'users.php');
+            include_once(site_path . DIRSEP . 'models' . DIRSEP . 'users.php');
             $usersModel = new Model_Users($this->registry);
             $isAuthorized = $usersModel->isAuthorized();
             
-            include_once($site_dir . DIRSEP . 'models' . DIRSEP . 'ajax.php');
+            include_once(site_path . DIRSEP . 'models' . DIRSEP . 'ajax.php');
             $ajaxModel = new Model_Ajax($this->registry);
             $countries = $ajaxModel->getCountries();
             
@@ -50,7 +50,7 @@ Class Controller_Registration Extends Controller_Base {
                 }
             }
             
-            include_once($site_dir . DIRSEP . 'views' . DIRSEP . 'registration.php');
+            include_once(site_path . DIRSEP . 'views' . DIRSEP . 'registration.php');
             
         }
         

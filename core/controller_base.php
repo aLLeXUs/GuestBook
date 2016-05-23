@@ -12,7 +12,7 @@ abstract class Controller_Base {
         
         session_start(); 
                   
-        include_once($site_dir . DIRSEP . 'models' . DIRSEP . 'users.php');
+        include_once(site_path . DIRSEP . 'models' . DIRSEP . 'users.php');
         $usersModel = new Model_Users();
         $usersModel->tryAuth($_SESSION['login'], $_SESSION['password']);
     }

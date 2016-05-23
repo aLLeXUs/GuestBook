@@ -3,7 +3,7 @@
 class Controller_Validation Extends Controller_Base {
 
         function index() {
-                include_once($site_dir . DIRSEP . 'models' . DIRSEP . 'users.php');
+                include_once(site_path . DIRSEP . 'models' . DIRSEP . 'users.php');
                 $usersModel = new Model_Users($this->registry);
                 
                 // если в запросе есть код подтверждения
@@ -32,7 +32,7 @@ class Controller_Validation Extends Controller_Base {
                 }
                 
                 
-                include_once($site_dir . DIRSEP . 'views' . DIRSEP . 'validation.php');
+                include_once(site_path . DIRSEP . 'views' . DIRSEP . 'validation.php');
         }
 
 }

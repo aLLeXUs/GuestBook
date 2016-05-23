@@ -9,7 +9,7 @@ class Router {
     }
     
     function setPath($path) {
-        $path = trim($path, '/\\');
+        //$path = trim($path, '/\\');
         $path .= DIRSEP;
 
         if (is_dir($path) == false) {
