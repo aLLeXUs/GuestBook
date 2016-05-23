@@ -15,13 +15,13 @@
             <div class="alert alert-<?=$alert['type']?>" role="alert"><?=$alert['text']?></div>
             <?php endif; ?>
             
-            <?php if ($gb->isAuthorized()): ?>
+            <?php if ($isAuthorized): ?>
             <div class="alert alert-info" role="alert">
-                Signed in as: <b><?=$gb->user['login']?></b><br>
-                <a href="index.php?mode=logout">Logout</a>
+                Signed in as: <b><?=$user['login']?></b><br>
+                <a href="index?mode=logout">Logout</a>
             </div>
             
-            <?php if ($gb->isVerified()): ?>
+            <?php if ($isVerified): ?>
 
             <form class="form-comment" action="" method="POST">
                 Subject: <input type="text" class="form-control" name="subject" value="<?= isError() ? htmlspecialchars($_POST['subject']) : '' ?>" required>

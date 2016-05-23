@@ -35,7 +35,7 @@
                 <div id="country">
                     <select class="form-control" name="country" required>
                         <option value="">Select country...</option>
-                        <?php foreach ($gb->getCountries() as $key): ?>
+                        <?php foreach ($countries as $key): ?>
                         <option value="<?=$key['id']?>"><?=$key['name']?></option>
                         <?php endforeach; ?>
                     </select>
@@ -60,9 +60,9 @@
                     $(document).ready(function(){ 
                         $('#country select').change(function(){
                             $.ajax({
-                                url: "ajax.php",
+                                url: "ajax/city",
                                 dataType: "json",            
-                                data: {"mode": "city", "country": $(this).val()},
+                                data: {"country": $(this).val()},
                                 success: function(data){
                                     $('#region').removeClass("hidden");
                                     $('#city').addClass("hidden");
@@ -79,9 +79,9 @@
                         
                         $('#region select').change(function(){
                             $.ajax({
-                                url: "ajax.php",
+                                url: "ajax/city",
                                 dataType: "json",            
-                                data: {"mode": "city", "region": $(this).val()},
+                                data: {"region": $(this).val()},
                                 success: function(data){
                                     $('#city').removeClass("hidden");
                                     $('#city select').empty();

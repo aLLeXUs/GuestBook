@@ -1,28 +1,18 @@
 <?php
 
-require('include/functions.php');
+require_once('core/constants.php');
+require_once('core/functions.php');
+require_once('core/controller_base.php');
+require_once('core/model_base.php');
+require_once('core/db.php');
 
-if ($gb->isAuthorized()) {
-    if ($_GET['mode'] == 'logout') {
-        $gb->logout();
-        header('Location: index.php');
-    } else {
-        header('Location: comments.php');
-    }  
-} else {       
-    if (isset($_POST['login']) && isset($_POST['password'])) {
-        //header('Refresh: 3; url=' . $_SERVER['SCRIPT_NAME']);
-        // на странице авторизации
-        if ($gb->tryAuth($_POST['login'], $_POST['password'])) {
-            $gb->login($_POST['login'], $_POST['password']);
-            header('Location: comments.php');
-        } else {
-            $needAlert = true;
-            $needForm = true;
-            $alert = ['type' => 'danger', 'text' => 'Authorization failed'];
-        }
-    } else {  
-        $needForm = true;
-    }
-    require_once("template/auth.php");
-}
+$db = db::GetInstance();
+$db -> openConnection();
+
+$error = '';
+
+# Загружаем router
+require_once('core/router.php');
+$router = new Router();
+$router->setPath (site_path . 'controllers');
+$router->delegate();
